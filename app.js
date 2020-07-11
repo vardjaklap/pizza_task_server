@@ -9,6 +9,7 @@ var cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mainAPIRouter = require('./routes/mainAPI');
+var findOrdersAPI = require('./routes/findOrdersAPI');
 
 var app = express();
 
@@ -26,11 +27,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testAPI", mainAPIRouter);
+app.use("/findOrders", findOrdersAPI);
+
 app.post('/usdToEur', (req, res, next) => {
-  let eur = (parseFloat(req.body.usd) * 0.8).toString();
+  let eur = (parseFloat(req.body.usd) * 0.88494).toString();
   console.log(eur);
   res.send(eur);
 });
+
+
+// app.post('/findOrders', (req, res, next) => {
+//   res.send("test");
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
