@@ -10,14 +10,15 @@ router.post("", function(req, res, next) {
         password : "2aSty3PHON",
         database: '1y1N70JWV8'
     });
-    connection.query("SELECT * FROM orders WHERE username='"+ req.body.username +"' AND surname='" + req.body.surname + "'", function(err, rows, fields) {
+    connection.query("INSERT INTO `orders` (`id`, `username`, `first_name`, `surname`, `address`, `order_desc`, `price`, `date`) VALUES (NULL, '"+ req.body.username +"', '"+ req.body.first_name +"', '"+ req.body.surname +"', '"+ req.body.address +"', '"+ req.body.order_desc +"', '"+ req.body.price +"', '"+ req.body.date +"');", function(err, rows, fields) {
         if(err){
             console.log("An error occurred performing the query.");
             console.log(err);
             return;
         }
 
-        res.send(rows);
+        // res.send(rows);
+
     });
     connection.end();
 });

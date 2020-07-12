@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mainAPIRouter = require('./routes/mainAPI');
 var findOrdersAPI = require('./routes/findOrdersAPI');
+var insertOrderAPI = require('./routes/insertOrder');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testAPI", mainAPIRouter);
 app.use("/findOrders", findOrdersAPI);
+app.use("/insertOrder", insertOrderAPI);
 
 app.post('/usdToEur', (req, res, next) => {
   let eur = (parseFloat(req.body.usd) * 0.88494).toString();
